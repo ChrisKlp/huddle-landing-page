@@ -1,0 +1,465 @@
+@import './reset';
+@import './mixins';
+@import './base';
+@import './components';
+
+.header {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    &__container {
+        @extend .container;
+
+        position: absolute;
+        padding-top: 2.6rem;
+        padding-bottom: 2.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__logo {
+        display: block;
+        width: 10rem;
+    }
+
+    &__button {
+        @extend .button;
+
+        padding: 0.5rem 2rem;
+        width: 10rem;
+        font-size: 1.1rem;
+        color: $color-very-dark-cyan;
+        background-color: $color-white;
+        box-shadow: 0 0.3rem 0.5rem rgba($color-grayish-blue, 0.2);
+
+        &:hover {
+            background-color: $color-white;
+            color: $color-pink;
+        }
+
+        &:focus {
+            background-color: lighten($color-very-pale-cyan, 3%);
+        }
+    }
+}
+
+.intro {
+    background-color: $color-very-pale-cyan;
+    background-image: url('../images/bg-hero-mobile.svg');
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: 100%;
+
+    &__container {
+        @extend .container;
+
+        padding: 13.2rem 3.4rem 2.5rem;
+        text-align: center;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__heading {
+        @extend .heading;
+
+        margin-bottom: 2.2rem;
+    }
+
+    &__text {
+        @extend .text;
+
+        margin-bottom: 4rem;
+    }
+
+    &__button {
+        @extend .button;
+    }
+
+    &__image {
+        margin: 0 auto;
+        padding-top: 5.4rem;
+        max-width: 69rem;
+        width: 95%;
+    }
+}
+
+.features {
+    &__container {
+        @extend .container;
+
+        padding-top: 6rem;
+        padding-bottom: 6rem;
+        text-align: center;
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        gap: 4rem;
+    }
+
+    &__card {
+        display: grid;
+        gap: 5rem;
+        padding: 4.3rem;
+        border-radius: 1.4rem;
+        box-shadow: 0 0 1rem rgba($color-grayish-blue, 0.2);
+    }
+
+    &__image {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        max-width: 30rem;
+        height: 20.5rem;
+    }
+
+    &__heading {
+        @extend .heading;
+
+        font-size: 2.1rem;
+        margin-bottom: 1.2rem;
+    }
+
+    &__text {
+        @extend .text;
+
+        font-size: 1.4rem;
+        line-height: 150%;
+        color: $color-grayish-blue;
+    }
+}
+
+.promo {
+    &__container {
+        @extend .container;
+
+        position: relative;
+        margin-top: 5.5rem;
+        margin-bottom: -7rem;
+        padding-top: 4.5rem;
+        padding-bottom: 4.5rem;
+        max-width: 45rem;
+        width: 95%;
+        text-align: center;
+        border-radius: 1.4rem;
+        background-color: $color-white;
+        box-shadow: 0 0 1rem rgba($color-grayish-blue, 0.2);
+    }
+
+    &__heading {
+        @extend .heading;
+
+        margin-bottom: 2rem;
+        font-size: 1.8rem;
+    }
+
+    &__button {
+        @extend .button;
+
+        font-size: 1rem;
+        padding: 1.5rem;
+        width: 22rem;
+    }
+}
+
+.footer {
+    background-color: $color-very-dark-cyan;
+
+    a {
+        color: $color-very-pale-cyan;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    &__container {
+        @extend .container;
+
+        padding-top: 14rem;
+        color: $color-very-pale-cyan;
+    }
+
+    &__logo {
+        margin-bottom: 2.5rem;
+        height: 2.6rem;
+        background-color: $color-white;
+        mask: url('../images/logo.svg') no-repeat 0 0 / contain;
+    }
+
+    &__contacts {
+        margin-bottom: 5rem;
+        display: grid;
+        gap: 2.5rem;
+    }
+
+    &__contact {
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        font-size: 1.6rem;
+        line-height: 150%;
+        letter-spacing: 0.03rem;
+
+        &::before {
+            flex: 0 0 2rem;
+            height: 1.8rem;
+            content: '';
+        }
+    }
+
+    .location-icon::before {
+        margin-top: 0.5rem;
+        align-self: flex-start;
+        background: url('../images/icon-location.svg') no-repeat;
+    }
+
+    .phone-icon::before {
+        background: url('../images/icon-phone.svg') no-repeat;
+    }
+
+    .email-icon::before {
+        background: url('../images/icon-email.svg') no-repeat;
+    }
+
+    &__nav {
+        margin-bottom: 5rem;
+    }
+
+    &__social {
+        margin-bottom: 3rem;
+    }
+
+    &__copyright {
+        padding-bottom: 5rem;
+        font-size: 1.1rem;
+        text-align: center;
+        color: $color-very-pale-cyan;
+    }
+}
+
+@media (min-width: 576px) {
+    .footer {
+        &__container {
+            display: grid;
+            grid-template-areas:
+                'logo logo'
+                'contact nav'
+                'social social'
+                'copyright copyright';
+            grid-template-columns: 50% 1fr;
+            gap: 0 5rem;
+            align-items: start;
+        }
+
+        &__logo {
+            grid-area: logo;
+        }
+
+        &__contacts {
+            grid-area: contact;
+        }
+
+        &__nav {
+            grid-area: nav;
+        }
+
+        &__social {
+            grid-area: social;
+        }
+
+        &__copyright {
+            grid-area: copyright;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .header {
+        &__logo {
+            width: 20rem;
+        }
+
+        &__button {
+            padding: 1.6rem 2rem;
+            width: 20rem;
+            font-size: 1.4rem;
+        }
+    }
+
+    .intro {
+        &__content {
+            margin: 0 auto;
+            max-width: 52rem;
+        }
+    }
+
+    .features {
+        &__heading {
+            font-size: 2.6rem;
+        }
+
+        &__text {
+            font-size: 1.8rem;
+        }
+    }
+
+    .promo {
+        &__container {
+            max-width: 55rem;
+        }
+        &__heading {
+            font-size: 2.6rem;
+        }
+
+        &__button {
+            font-size: 1.4rem;
+            padding: 2rem 7rem;
+            width: unset;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .header__container {
+        padding-top: 5rem;
+    }
+
+    .intro {
+        background-image: url('../images/bg-hero-desktop.svg');
+
+        &__container {
+            padding: 16rem 4rem 6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        &__content {
+            margin: 0;
+            text-align: left;
+            align-items: flex-start;
+        }
+
+        &__heading {
+            margin-bottom: 3rem;
+        }
+
+        &__text {
+            margin-bottom: 3rem;
+        }
+
+        &__image {
+            margin: 0;
+            padding-top: 0;
+        }
+    }
+
+    .features {
+        &__container {
+            max-width: 131rem;
+        }
+
+        &__card {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-areas: 'content image';
+            align-items: center;
+            justify-items: center;
+            gap: 2rem;
+            padding: 2rem;
+
+            &:nth-child(2) {
+                grid-template-areas: 'image content';
+                .features__content {
+                    padding-left: 8rem;
+                }
+
+                .features__image {
+                    justify-self: center;
+                }
+            }
+        }
+
+        &__content {
+            padding-left: 10rem;
+            grid-area: content;
+            text-align: left;
+        }
+
+        &__image {
+            grid-area: image;
+            justify-self: end;
+            margin: 0;
+            max-width: 42rem;
+            height: 40.4rem;
+        }
+    }
+
+    .footer {
+        &__container {
+            max-width: 128rem;
+            grid-template-areas:
+                'logo logo .'
+                'contact nav social'
+                '. copyright copyright';
+            grid-template-columns: 40% 37% 1fr;
+            gap: 0 3rem;
+            align-items: start;
+        }
+
+        &__logo {
+            margin-bottom: 4rem;
+            height: 3.8rem;
+        }
+
+        &__contacts {
+            margin-bottom: 4rem;
+
+            & .location-icon {
+                max-width: 40rem;
+            }
+        }
+
+        &__copyright {
+            padding-top: 0rem;
+            text-align: right;
+            font-size: 1.2rem;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .features__container {
+        padding-top: 16rem;
+        padding-bottom: 10rem;
+    }
+
+    .promo {
+        &__container {
+            max-width: 80rem;
+            margin-bottom: -10rem;
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
+
+        &__heading {
+            margin-bottom: 3.5rem;
+            font-size: 3.2rem;
+        }
+
+        &__button {
+            width: 40rem;
+            padding: 2.7rem 0;
+            font-size: 1.9rem;
+        }
+    }
+
+    .footer__container {
+        padding-top: 19rem;
+    }
+}

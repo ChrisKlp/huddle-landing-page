@@ -1,0 +1,112 @@
+@import './mixins';
+
+.container {
+    max-width: 136rem;
+    padding: 0 2rem;
+    margin: 0 auto;
+    width: 100%;
+
+    @include s-lg {
+        padding: 0 4rem;
+    }
+}
+
+.heading {
+    font: 700 2.4rem / 150% $poppins;
+    color: $color-very-dark-cyan;
+
+    @include s-md {
+        font-size: 4rem;
+    }
+}
+
+.text {
+    font: 1.6rem $open-sans;
+    color: $color-very-dark-cyan;
+
+    @include s-md {
+        font-size: 1.8rem;
+        line-height: 150%;
+    }
+}
+
+.button {
+    padding: 1.3rem 2rem;
+    background-color: $color-pink;
+    width: 80%;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: $color-white;
+    border: none;
+    border-radius: 2em;
+    cursor: pointer;
+    box-shadow: 0 0.3rem 0.5rem rgba($color-grayish-blue, 0.4);
+    transition: background-color 0.3s, color 0.3s;
+
+    &:hover {
+        background-color: lighten($color-pink, 7%);
+    }
+
+    &:focus {
+        outline: none;
+        background-color: lighten($color-pink, 3%);
+    }
+
+    @include s-md {
+        padding: 2rem 7rem;
+        width: unset;
+        font-size: 1.4rem;
+    }
+}
+
+// Footer
+
+.nav {
+    &__list {
+        display: grid;
+        gap: 2rem;
+
+        @include s-sm {
+            grid: repeat(3, 1fr) / repeat(2, 1fr);
+        }
+    }
+
+    &__link {
+        font-size: 1.8rem;
+    }
+}
+
+.social {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+
+    @include s-lg {
+        justify-content: flex-start;
+    }
+
+    &__link {
+        display: grid;
+        place-content: center;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        border: 1px solid $color-white;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: $color-white;
+
+            .social__icon {
+                color: $color-very-dark-cyan;
+            }
+        }
+    }
+
+    &__icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        color: $color-white;
+        transition: color 0.3s;
+    }
+}
